@@ -1,8 +1,9 @@
 import React from 'react'
-import {TouchableOpacity, Text, View, StyleSheet, Button, Alert, Animated} from 'react-native';
+import {TouchableOpacity, Text, View, StyleSheet, Button, Image, Alert, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {floor} from "react-native-reanimated";
 import LinearGradient from 'react-native-linear-gradient';
+import Header from "react-native/Libraries/NewAppScreen/components/Header";
 
 const Separator = () => (
     <View style={styles.separator}/>
@@ -24,22 +25,24 @@ const Home = () => {
 
             <View style={styles.container}>
 
-                <Text style={styles.titleText}>Артём гей</Text>
-                <Text style={styles.baseText}>Артём гей</Text>
-                <Text style={styles.titleText}>Артём гей</Text>
+                <Image
+                    style={{width: 300, height: 100, marginBottom:70}}
+                    source={require('./image/text.png')}
+                />
 
-                <View style={styles.countContainer} style={{marginBottom: 100, marginTop: 30}}>
+                <Image
+                    style={{width: 200, height: 200, marginBottom:30}}
+                    source={require('./image/start.png')}
+                />
 
-                    <TouchableOpacity onPress={goToAbout}>
+                <View style={styles.countContainer} style={{marginBottom: 80, marginTop: 30}}>
 
-                        <Button
-                            size={15}
-                            color="royalblue"
-                            title="START GAME"
-                            onPress={() => Alert.alert('Simple Button pressed')}
-                        />
-
-                    </TouchableOpacity>
+                    <Button
+                        size={15}
+                        color="royalblue"
+                        title="START GAME"
+                        onPress={goToAbout}
+                    />
 
                 </View>
 
