@@ -6,8 +6,8 @@ import About from './routes/About.js';
 const Routes = () => (
     <Router>
         <Scene key="root">
-            <Scene key="home" component={Home} title="Home" initial={true}/>
-            <Scene key="about" component={About} title="About"/>
+            <Scene key="home" component={Home} header={null} initial={true}/>
+            <Scene key="about" component={About}/>
         </Scene>
     </Router>
 );
