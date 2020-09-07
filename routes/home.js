@@ -5,14 +5,16 @@ import {floor} from "react-native-reanimated";
 import LinearGradient from 'react-native-linear-gradient';
 import Header from "react-native/Libraries/NewAppScreen/components/Header";
 
+
+
 const Separator = () => (
     <View style={styles.separator}/>
 );
 
 const Home = () => {
 
-    const goToAbout = () => {
-        Actions.about()
+    const goToGame = () => {
+        Actions.game()
     };
 
     return (
@@ -35,13 +37,13 @@ const Home = () => {
                     source={require('./image/start.png')}
                 />
 
-                <View style={styles.countContainer} style={{marginBottom: 80, marginTop: 30}}>
+                <View style={styles.countContainer} >
 
                     <Button
                         size={15}
                         color="royalblue"
                         title="START GAME"
-                        onPress={goToAbout}
+                        onPress={goToGame}
                     />
 
                 </View>
@@ -83,7 +85,9 @@ const styles = StyleSheet.create({
     },
     countContainer: {
         alignItems: "center",
-        padding: 10
+        padding: 10,
+        marginBottom: 80,
+        marginTop: 30
     }
 });
 
