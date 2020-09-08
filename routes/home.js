@@ -6,15 +6,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import Header from "react-native/Libraries/NewAppScreen/components/Header";
 
 
-
-const Separator = () => (
-    <View style={styles.separator}/>
-);
-
 const Home = () => {
 
-    const goToGame = () => {
-        Actions.game()
+    const goToComplexity = () => {
+        Actions.complexity()
     };
 
     return (
@@ -43,7 +38,7 @@ const Home = () => {
                         size={15}
                         color="royalblue"
                         title="START GAME"
-                        onPress={goToGame}
+                        onPress={goToComplexity}
                     />
 
                 </View>

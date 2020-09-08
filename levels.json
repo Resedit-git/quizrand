@@ -1,27 +1,48 @@
 {
   "1": {
-    "question": "vopros1 asdasd asdasdasd asdasd",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
+    "1": {
+      "question": "easy first",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "2": {
+      "question": "easy second",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "3": {
+      "question": "easy third",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "4": {
+      "question": "easy fourth",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    }
   },
   "2": {
-    "question": "vopros2",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
+    "1": {
+      "question": "medium first",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "2": {
+      "question": "medium second",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    }
   },
   "3": {
-    "question": "vopros3",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
-  },
-  "4": {
-    "question": "vopros4",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
-  },
-  "5": {
-    "question": "vopros5",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
+    "1": {
+      "question": "hard first",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "2": {
+      "question": "hard second",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    }
   }
 }
