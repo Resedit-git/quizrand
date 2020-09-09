@@ -1,9 +1,8 @@
 import React from 'react'
 import {TouchableOpacity, Text, View, StyleSheet, Button, Image, Alert, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-
+import { Dimensions } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
-
 
 const Complexity = () => {
 
@@ -15,6 +14,9 @@ const Complexity = () => {
         Actions.home()
     };
 
+    var deviceWidth = Dimensions.get("window").width;
+    var deviceHeight = Dimensions.get("window").height;
+
     return (
 
         <LinearGradient
@@ -25,6 +27,19 @@ const Complexity = () => {
         >
 
             <View style={styles.container}>
+
+                <View style={[styles.countContainer, {marginBottom: 30}]}>
+
+                    <TouchableOpacity
+                        style={[styles.button]}
+                        color="royalblue"
+                        onPress={() => goToTutorial('1')}
+                    >
+                        <Text style={styles.baseText}>TUTORIAL</Text>
+                    </TouchableOpacity>
+
+
+                </View>
 
                 <View style={styles.countContainer}>
 
@@ -65,7 +80,7 @@ const Complexity = () => {
 
                 </View>
 
-                <View style={styles.countContainer}>
+                <View style={[styles.countContainer, {marginTop: 60}]}>
 
                     <TouchableOpacity
                         style={[styles.buttonBack]}
@@ -100,14 +115,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "flex-end",
-        paddingBottom: 80,
+        paddingBottom: 30,
     },
+
     button: {
         borderRadius: 50,
         alignItems: "center",
-        backgroundColor: "royalblue",
+        borderColor: 'white',
+        borderWidth: 1,
         padding: 10,
-
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -115,24 +131,23 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 16.84,
-
-        elevation: 5,
+        elevation: 3,
     },
     buttonBack: {
         borderRadius: 50,
         alignItems: "center",
-        backgroundColor: "#B57EDC",
+        borderColor: 'white',
+        borderWidth: 1,
         padding: 10,
-
-        shadowColor: "#000",
+        shadowColor: "purple",
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 5,
         },
-        shadowOpacity: 0.25,
+        shadowOpacity: 1.25,
         shadowRadius: 5.84,
 
-        elevation: 5,
+        elevation: 4,
     },
     linearGradient: {
         flex: 1,
