@@ -14,8 +14,8 @@ const Complexity = () => {
         Actions.home()
     };
 
-    var deviceWidth = Dimensions.get("window").width;
-    var deviceHeight = Dimensions.get("window").height;
+    const deviceWidth = Dimensions.get("window").width;
+    const deviceHeight = Dimensions.get("window").height;
 
     return (
 

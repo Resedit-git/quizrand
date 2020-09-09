@@ -2,11 +2,8 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, Image, Button, TouchableOpacity, Alert, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
-import System from '../classes/system.class';
 
 import * as Levels from '../levels';
-
-
 
 function shuffleArray(array) {
     let i = array.length - 1;
@@ -81,17 +78,6 @@ const Game = (props) => {
 
             </View>
 
-            <View style={styles.buttonContainer}>
-
-                <Button
-                    size={15}
-                    color="royalblue"
-                    title="Menu"
-                    onPress={goToHome}
-                />
-
-            </View>
-
         </LinearGradient>
     );
 
@@ -101,39 +87,47 @@ const styles = StyleSheet.create({
 
     questionText: {
         fontFamily: 'Cochin',
-        color: 'black',
-        fontSize: 20,
-        fontWeight: 'bold',
+        color: 'white',
+        fontSize: 18,
+        fontWeight: '100',
     },
-
     lettersText: {
         fontFamily: 'Cochin',
         color: 'black',
         fontSize: 25,
         fontWeight: 'bold',
     },
-
     textCenter: {
         textAlign: 'center',
+        justifyContent: 'space-evenly',
     },
-
     questionContainer: {
         width: 280,
         marginTop: 50,
-        padding: 20,
+        justifyContent: 'space-evenly',
+        padding: 10,
         borderRadius: 25,
-        backgroundColor: 'royalblue',
+        borderColor: 'white',
+        borderWidth: 1,
         flexDirection: 'row',
         alignItems: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 16.84,
+        elevation: 3,
     },
-
     letters: {
         borderRadius: 50,
         alignItems: 'center',
         width: 40,
         height: 40,
         backgroundColor: 'white',
-        margin: 10,
+        margin: 3,
+        marginTop: 10,
     },
     lettersContainer: {
         width: 280,
@@ -147,19 +141,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
     },
-
     answerContainer: {
         borderRadius: 25,
+        alignItems: "center",
+        borderColor: 'white',
+        borderWidth: 1,
         width: 200,
         height: 60,
         marginTop: 80,
-        alignItems: 'center',
-        backgroundColor: 'lightblue',
-        padding: 20,
+        justifyContent: 'space-evenly',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 16.84,
+        elevation: 3,
     },
     answerText: {
         fontFamily: 'Cochin',
-        color: 'black',
+        color: 'white',
         fontSize: 20,
         fontWeight: 'bold',
     },

@@ -6,9 +6,9 @@
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     },
     "2": {
-      "question": "easy second",
-      "answer": "otvet",
-      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+      "question": "Нравится ли вам тот человек, которым вы стали?",
+      "answer": "Да",
+      "letters": ["Д", "А", "o", "e", "t", "s", "d", "d", "v", "t", "o", "e", "Д", "А", "o", "e", "t", "s", "d", "d", "v", "t", "o", "e"]
     },
     "3": {
       "question": "easy third",
