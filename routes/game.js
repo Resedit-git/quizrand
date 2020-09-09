@@ -26,14 +26,16 @@ const Game = (props) => {
     const complexity = props.complexity;
     const level = Levels[complexity][levelID];
     let letters = shuffleArray(level.letters);
+    let [disabledLetter, setDisabledLetter] = useState( []);
     let [answer, setAnswer] = useState([]);
 
     function validate(e) {
         answer = setAnswer(`${answer}${e}`);
 
 
-        const index = letters.indexOf(e);
-        letters.splice(index, 1);
+        //const index = letters.indexOf(e);
+        //letters.splice(index, 1);
+        disabledLetter = setDisabledLetter(letters)
     }
 
     const rows = letters.map((letter, index) =>
@@ -41,6 +43,7 @@ const Game = (props) => {
         <View key={index}>
             <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
                   onPress={() => validate(letter)}
+                  disabled={disabledLetter.includes(letter)}
             >
                 {letter}
             </Text>
