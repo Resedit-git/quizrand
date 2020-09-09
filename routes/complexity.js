@@ -7,8 +7,8 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const Complexity = () => {
 
-    const goToLevel = () => {
-        Actions.level()
+    const goToLevel = (complexity) => {
+        Actions.levelsList({complexity: complexity})
     };
 
     const goToHome = () => {
@@ -31,7 +31,7 @@ const Complexity = () => {
                     <TouchableOpacity
                         style={[styles.button]}
                         color="royalblue"
-                        onPress={goToLevel}
+                        onPress={() => goToLevel('1')}
                     >
                         <Text style={styles.baseText}>EASY</Text>
                     </TouchableOpacity>
@@ -44,7 +44,7 @@ const Complexity = () => {
                     <TouchableOpacity
                         style={[styles.button]}
                         color="royalblue"
-                        onPress={goToLevel}
+                        onPress={() => goToLevel('2')}
                     >
                         <Text style={styles.baseText}>MEDIUM</Text>
                     </TouchableOpacity>
@@ -57,7 +57,7 @@ const Complexity = () => {
                     <TouchableOpacity
                         style={[styles.button]}
                         color="royalblue"
-                        onPress={goToLevel}
+                        onPress={() => goToLevel('3')}
                     >
                         <Text style={styles.baseText}>HARD</Text>
                     </TouchableOpacity>

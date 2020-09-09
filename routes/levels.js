@@ -4,15 +4,12 @@ import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
 import * as L from '../levels';
 
-const LevelsList = () => {
-    let ids = [];
-
-    for (let i = 1; i < 21; i++) {
-        ids.push(i)
-    }
+const LevelsList = (props) => {
+    let complexity = props.complexity;
+    let levels = Object.keys(L[complexity]);
 
     const goToGame = (level) => {
-        Actions.game({level: level})
+        Actions.game({level: level, complexity: complexity})
     };
 
     return (
@@ -27,8 +24,8 @@ const LevelsList = () => {
                 <View style={[styles.lettersContainer]}>
                     <View style={[styles.lettersSpace]}>
                         {
-                            ids.map(function (id) {
-                                return <View>
+                            levels.map(function (id, index) {
+                                return <View key={index}>
 
                                     <TouchableOpacity
                                         style={[styles.letters, {flexWrap: 'nowrap'}]}
@@ -97,3 +94,4 @@ const styles = StyleSheet.create({
 });
 
 export default LevelsList
+

@@ -1,36 +1,46 @@
 {
   "1": {
     "1": {
-      "question": "vopros1 asdasd asdasdasd asdasd",
+      "question": "easy first",
       "answer": "otvet",
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     },
     "2": {
-      "question": "vopros2 asdasd asdasdasd asdasd",
+      "question": "easy second",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "3": {
+      "question": "easy third",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "4": {
+      "question": "easy fourth",
       "answer": "otvet",
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     }
   },
   "2": {
     "1": {
-      "question": "вторя ты д",
+      "question": "medium first",
       "answer": "otvet",
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     },
     "2": {
-      "question": "vopros2 asdasd asdasdasd asdasd",
+      "question": "medium second",
       "answer": "otvet",
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     }
   },
   "3": {
     "1": {
-      "question": "третий рейх",
+      "question": "hard first",
       "answer": "otvet",
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     },
     "2": {
-      "question": "vopros2 asdasd asdasdasd asdasd",
+      "question": "hard second",
       "answer": "otvet",
       "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
     }
