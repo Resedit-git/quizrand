@@ -16,7 +16,8 @@ const Home = () => {
 
         <LinearGradient
 
-            start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#4c669f', '#3b5998', '#192f6a']}
+            start={{x: 0, y: 1}} end={{x: 0, y: 0}}
+            colors={["#2c5aff", "#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
             style={{flex: 1}}
         >
 
