@@ -1,27 +1,38 @@
 {
   "1": {
-    "question": "vopros1 asdasd asdasdasd asdasd",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
+    "1": {
+      "question": "vopros1 asdasd asdasdasd asdasd",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "2": {
+      "question": "vopros2 asdasd asdasdasd asdasd",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    }
   },
   "2": {
-    "question": "vopros2",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
+    "1": {
+      "question": "вторя ты д",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "2": {
+      "question": "vopros2 asdasd asdasdasd asdasd",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    }
   },
   "3": {
-    "question": "vopros3",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
-  },
-  "4": {
-    "question": "vopros4",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
-  },
-  "5": {
-    "question": "vopros5",
-    "answer": "otvet",
-    "letters": ["v", "t", "o", "e", "t", "s", "d"]
+    "1": {
+      "question": "третий рейх",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    },
+    "2": {
+      "question": "vopros2 asdasd asdasdasd asdasd",
+      "answer": "otvet",
+      "letters": ["v", "t", "o", "e", "t", "s", "d", "d"]
+    }
   }
 }

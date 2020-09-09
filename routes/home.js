@@ -3,9 +3,6 @@ import {TouchableOpacity, Text, View, StyleSheet, Button, Image, Alert, Animated
 import {Actions} from 'react-native-router-flux';
 import {floor} from "react-native-reanimated";
 import LinearGradient from 'react-native-linear-gradient';
-import Header from "react-native/Libraries/NewAppScreen/components/Header";
-
-
 
 const Separator = () => (
     <View style={styles.separator}/>
@@ -13,15 +10,15 @@ const Separator = () => (
 
 const Home = () => {
 
-    const goToGame = () => {
-        Actions.game()
+    const goToComplexity = () => {
+        Actions.complexity()
     };
 
     return (
 
         <LinearGradient
 
-            start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#4c669f', '#3b5998', '#192f6a']}
+            start={{x: 0, y: 1}} end={{x: 0, y: 0}} colors={["#2c5aff","#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
             style={{flex: 1}}
         >
 
@@ -39,12 +36,14 @@ const Home = () => {
 
                 <View style={styles.countContainer} >
 
-                    <Button
-                        size={15}
+                    <TouchableOpacity
+                        style={[styles.button]}
                         color="royalblue"
-                        title="START GAME"
-                        onPress={goToGame}
-                    />
+                        onPress={goToComplexity}
+                    >
+                        <Text style={styles.baseText}>MENU SETTINGS</Text>
+                </TouchableOpacity>
+
 
                 </View>
 
@@ -58,7 +57,7 @@ const Home = () => {
 const styles = StyleSheet.create({
     baseText: {
         fontFamily: "Cochin",
-        color: "red",
+        color: "white",
         fontSize: 20,
     },
     titleText: {
@@ -74,8 +73,6 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
     },
     linearGradient: {
         flex: 1,
