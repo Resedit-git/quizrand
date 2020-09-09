@@ -1,11 +1,10 @@
 import React from 'react'
 import {TouchableOpacity, Text, View, StyleSheet, Button, Image, Alert, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import {floor} from "react-native-reanimated";
 import LinearGradient from 'react-native-linear-gradient';
+import Header from "react-native/Libraries/NewAppScreen/components/Header";
 
-const Separator = () => (
-    <View style={styles.separator}/>
-);
 
 const Home = () => {
 
@@ -15,11 +14,10 @@ const Home = () => {
 
     return (
 
-
-
         <LinearGradient
 
-            start={{x: 0, y: 1}} end={{x: 0, y: 0}} colors={["#2c5aff","#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
+            start={{x: 0, y: 1}} end={{x: 0, y: 0}}
+            colors={["#2c5aff", "#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
             style={{flex: 1}}
         >
 
@@ -37,14 +35,12 @@ const Home = () => {
 
                 <View style={styles.countContainer} >
 
-                    <TouchableOpacity
-                        style={[styles.button]}
+                    <Button
+                        size={15}
                         color="royalblue"
+                        title="START GAME"
                         onPress={goToComplexity}
-                    >
-                        <Text style={[styles.baseText, {margin: 5, paddingLeft: 20, paddingRight: 20}]}>START</Text>
-                    </TouchableOpacity>
-
+                    />
 
                 </View>
 
@@ -58,7 +54,7 @@ const Home = () => {
 const styles = StyleSheet.create({
     baseText: {
         fontFamily: "Cochin",
-        color: "white",
+        color: "red",
         fontSize: 20,
     },
     titleText: {
@@ -73,23 +69,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     button: {
-        borderRadius: 1000,
         alignItems: "center",
-        borderColor: 'white',
-        borderWidth: 1,
-
-
-        padding: 10,
-
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 16.84,
-
-        elevation: 3,
+        backgroundColor: "#DDDDDD",
+        padding: 10
     },
     linearGradient: {
         flex: 1,

@@ -1,19 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View, StyleSheet, Image, Button, TouchableOpacity, Alert, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
+import System from '../classes/system.class';
 
 import * as Levels from '../levels';
 
-const goToHome = () => {
-    Actions.home()
-};
+
 
 function shuffleArray(array) {
     let i = array.length - 1;
     for (i; i > 0; i--) {
-        let index = Math.floor(Math.random() * (i + 1));
-        let a = array[index];
+        const index = Math.floor(Math.random() * (i + 1));
+        const a = array[index];
         array[index] = array[i];
         array[i] = a;
     }
@@ -21,76 +20,81 @@ function shuffleArray(array) {
     return array;
 }
 
-export default class Game extends React.Component {
+const Game = (props) => {
+    const goToHome = () => {
+        Actions.home()
+    };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            level: Levels['1'][this.props.level],
-            letters: []
-        };
+    const levelID = props.level;
+    const complexity = props.complexity;
+    const level = Levels[complexity][levelID];
+    let letters = shuffleArray(level.letters);
+    let [answer, setAnswer] = useState([]);
+
+    function validate(e) {
+        answer = setAnswer(`${answer}${e}`);
+
+
+        const index = letters.indexOf(e);
+        letters.splice(index, 1);
     }
 
-    componentDidMount() {
-        this.setState({ letters: shuffleArray(this.state.level.letters)});
-    }
+    const rows = letters.map((letter, index) =>
 
-    render() {
-        return (
-
-            <LinearGradient
-                start={{x: 0, y: 0}} end={{x: 0, y: 1}} colors={['#4c669f', '#3b5998', '#192f6a']}
-                style={{flex: 1}}
+        <View key={index}>
+            <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
+                  onPress={() => validate(letter)}
             >
+                {letter}
+            </Text>
+        </View>
+    );
 
-                <View style={[styles.container]}>
+    return (
+        <LinearGradient
+            start={{x: 0, y: 1}} end={{x: 0, y: 0}}
+            colors={["#2c5aff", "#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
+            style={{flex: 1}}
+        >
 
-                    <View style={styles.questionContainer}>
+            <View style={[styles.container]}>
 
-                        <Text style={[styles.questionText, styles.textCenter]}>
-                            {this.state.level.question}
-                        </Text>
+                <View style={styles.questionContainer}>
 
-                    </View>
-
-                    <View style={styles.answerContainer}>
-                        <Text style={[styles.answerText, styles.textCenter]}>
-                            {this.state.letters.length}
-                        </Text>
-                    </View>
-
-                    <View style={[styles.lettersContainer]}>
-                        <View style={[styles.lettersSpace]}>
-                            {
-                                this.state.letters.map((letter, index) =>
-                                    <View key={index}>
-                                        <Text
-                                            style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
-                                        >
-                                            {letter}
-                                        </Text>
-                                    </View>
-                                )
-                            }
-                        </View>
-                    </View>
+                    <Text style={[styles.questionText, styles.textCenter]}>
+                        {level.question}
+                    </Text>
 
                 </View>
 
-                <View style={styles.buttonContainer}>
-
-                    <Button
-                        size={15}
-                        color="royalblue"
-                        title="Menu"
-                        onPress={goToHome}
-                    />
-
+                <View style={styles.answerContainer}>
+                    <Text style={[styles.answerText, styles.textCenter]}>
+                        {answer}
+                    </Text>
                 </View>
 
-            </LinearGradient>
-        );
-    }
+                <View style={[styles.lettersContainer]}>
+                    <View style={[styles.lettersSpace]}>
+                        {rows}
+                    </View>
+                </View>
+
+            </View>
+
+            <View style={styles.buttonContainer}>
+
+                <Button
+                    size={15}
+                    color="royalblue"
+                    title="Menu"
+                    onPress={goToHome}
+                />
+
+            </View>
+
+        </LinearGradient>
+    );
+
 };
 
 const styles = StyleSheet.create({
@@ -107,14 +111,10 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 25,
         fontWeight: 'bold',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
 
     textCenter: {
         textAlign: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
     },
 
     questionContainer: {
@@ -125,15 +125,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'royalblue',
         flexDirection: 'row',
         alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 8,
-        },
-        shadowOpacity: 0.44,
-        shadowRadius: 10.32,
-
-        elevation: 16,
     },
 
     letters: {
@@ -143,15 +134,6 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: 'white',
         margin: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-
-        elevation: 6,
     },
     lettersContainer: {
         width: 280,
@@ -163,27 +145,17 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
     },
 
     answerContainer: {
         borderRadius: 25,
         width: 200,
         height: 60,
-        marginTop: 50,
+        marginTop: 80,
         alignItems: 'center',
         backgroundColor: 'lightblue',
         padding: 20,
-        //shadow
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 8,
-        },
-        shadowOpacity: 0.44,
-        shadowRadius: 10.32,
-
-        elevation: 16,
     },
     answerText: {
         fontFamily: 'Cochin',
@@ -213,3 +185,4 @@ const styles = StyleSheet.create({
         borderRadius: 25,
     },
 });
+export default Game;
