@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {Actions} from 'react-native-router-flux';
 
 import * as Levels from '../levels';
 
@@ -14,10 +15,11 @@ const Game = (props) => {
     let [disabledLetter, setDisabledLetter] = useState([]);
     let [answer, setAnswer] = useState([]);
 
+
     function createLetters(letter, index) {
         if (disabledLetter.includes(index)) {
             return (
-                <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
+                <Text style={[styles.letters, styles.textCenter, styles.lettersTextDisable, {flexWrap: 'nowrap'}]}
                       disabled
                 >
                     {letter}
@@ -34,17 +36,20 @@ const Game = (props) => {
         }
     }
 
+
     function validate(e, index) {
-        answer = setAnswer(`${answer}${e}`);
+        answer = [...answer, e];
+        setAnswer(answer);
+        disabledLetter = setDisabledLetter([...disabledLetter, index]);
 
-        //const index = letters.indexOf(e);
-        //letters.splice(index, 1);
 
-        disabledLetter = setDisabledLetter(`${disabledLetter}, ${index}`)
+        if (answer.length === level.answer.length) {
+            Actions.complexity();
+        }
+
     }
 
     const rows = letters.map((letter, index) =>
-
         <View key={index}>
             {createLetters(letter, index)}
         </View>,
@@ -89,25 +94,33 @@ const Game = (props) => {
 const styles = StyleSheet.create({
 
     questionText: {
-        fontFamily: 'Cochin',
+        fontFamily: 'GoogleSans-Bold',
         color: 'white',
         fontSize: 18,
         fontWeight: '100',
     },
     lettersText: {
-        fontFamily: 'Cochin',
+        fontFamily: 'GoogleSans-Bold',
+        color: 'white',
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
+    lettersTextDisable: {
+        fontFamily: 'GoogleSans-Bold',
         color: 'white',
         fontSize: 25,
         fontWeight: 'bold',
+        opacity: 0.5,
+
     },
     textCenter: {
+        paddingTop: 5,
         textAlign: 'center',
         justifyContent: 'space-evenly',
     },
     questionContainer: {
         width: 280,
         marginTop: 50,
-        justifyContent: 'space-evenly',
         padding: 10,
         paddingBottom: 30,
         flexDirection: 'row',
@@ -118,10 +131,9 @@ const styles = StyleSheet.create({
     },
     letters: {
         borderRadius: 50,
-        alignItems: 'center',
-        width: 40,
-        height: 40,
-        margin: 3,
+        width: 55,
+        height: 55,
+        margin: 5,
         marginTop: 10,
         borderColor: 'white',
         borderWidth: 1,
@@ -133,8 +145,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 16.84,
         elevation: 2,
-
-        backgroundColor: 'rgba(95,162,255, 0.5)',
+        backgroundColor: '#009fff',
 
     },
     lettersContainer: {
@@ -158,7 +169,7 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
     },
     answerText: {
-        fontFamily: 'Cochin',
+        fontFamily: 'Roboto',
         color: 'white',
         fontSize: 20,
         fontWeight: 'bold',

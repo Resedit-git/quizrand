@@ -12,4 +12,4 @@ class App extends Component {
   }
 }
 export default App
-AppRegistry.registerComponent('App', () => App)
+AppRegistry.registerComponent('App', () => App);
