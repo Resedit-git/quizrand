@@ -24,19 +24,17 @@ const Home = () => {
                     source={require('./image/text.png')}
                 />
 
-                <Image
-                    style={{width: 200, height: 200, marginBottom:30}}
-                    source={require('./image/start.png')}
-                />
-
                 <View style={styles.countContainer} >
 
                     <TouchableOpacity
-                        style={[styles.button]}
-                        color="royalblue"
                         onPress={goToComplexity}
                     >
-                        <Text style={[styles.baseText, {margin: 5, paddingLeft: 20, paddingRight: 20}]}>START</Text>
+                        <Image
+                            style={{height: 124}}
+                            source={require('./image/Logo.png')}
+                            onPress={goToComplexity}
+                        />
+
                     </TouchableOpacity>
 
 
@@ -51,34 +49,16 @@ const Home = () => {
 
 const styles = StyleSheet.create({
 
-    image: {
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center"
-    },
-
     baseText: {
         fontFamily: "Cochin",
         color: "white",
         fontSize: 20,
     },
-    titleText: {
-        fontSize: 20,
-        fontWeight: "bold"
-    },
-
-    logoText: {
-        color: '#FFFFFF',
-        fontFamily: 'GoogleSans-Bold',
-        fontSize: 30,
-        marginTop: 29.1,
-        fontWeight: '300',
-    },
-
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: 'center',
         alignItems: "center",
+        paddingTop: 80,
         paddingHorizontal: 10
     },
     button: {
@@ -98,12 +78,6 @@ const styles = StyleSheet.create({
         shadowRadius: 16.84,
 
         elevation: 3,
-    },
-    linearGradient: {
-        flex: 1,
-        paddingLeft: 15,
-        paddingRight: 15,
-        borderRadius: 5
     },
     countContainer: {
         alignItems: "center",

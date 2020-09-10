@@ -27,14 +27,14 @@ class LoadingScene extends Component {
 
             Animated.timing(LogoText, {
                 toValue: 1,
-                duration: 1200,
+                duration: 2000,
             }),
         ]).start(() => {
             this.setState({
                 loadingSpinner: true,
             });
 
-            setTimeout(goToHome, 1500);
+            setTimeout(goToHome, 3000);
         });
     }
 
@@ -68,7 +68,7 @@ class LoadingScene extends Component {
                     ) : null}
                 </Animated.View>
                 <Animated.View style={{opacity: this.state.LogoText}}>
-                    <Text style={styles.logoText}> LogoText </Text>
+                    <Text style={styles.logoText}>Prod. by Retards</Text>
                 </Animated.View>
             </View>
         );
