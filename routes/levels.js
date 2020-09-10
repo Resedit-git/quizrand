@@ -1,5 +1,5 @@
-import React from 'react'
-import {TouchableOpacity, Text, View, StyleSheet, Button, Image, Alert, Animated} from 'react-native';
+import React from 'react';
+import {TouchableOpacity, Text, View, StyleSheet} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
 import * as L from '../levels';
@@ -9,14 +9,15 @@ const LevelsList = (props) => {
     let levels = Object.keys(L[complexity]);
 
     const goToGame = (level) => {
-        Actions.game({level: level, complexity: complexity})
+        Actions.game({level: level, complexity: complexity});
     };
+
 
     return (
 
         <LinearGradient
             start={{x: 0, y: 1}} end={{x: 0, y: 0}}
-            colors={["#2c5aff", "#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
+            colors={['#2c5aff', '#0076ff', '#008cff', '#009fff', '#43a1ff', '#5fa2ff', '#74a4ff', '#a494f6', '#cc82e1']}
             style={{flex: 1}}
         >
 
@@ -36,7 +37,7 @@ const LevelsList = (props) => {
                                         <Text style={styles.baseText}>{id.toString()}</Text>
                                     </TouchableOpacity>
 
-                                </View>
+                                </View>;
                             })
                         }
                     </View>
@@ -45,12 +46,12 @@ const LevelsList = (props) => {
 
         </LinearGradient>
 
-    )
+    );
 };
 
 const styles = StyleSheet.create({
     countContainer: {
-        alignItems: "center",
+        alignItems: 'center',
         margin: 10,
     },
     baseText: {
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: 'white',
         margin: 10,
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 3,
@@ -93,5 +94,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LevelsList
+export default LevelsList;
 

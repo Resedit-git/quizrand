@@ -1,51 +1,59 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, Image, Button, TouchableOpacity, Alert, Animated} from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import {Text, View, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import * as Levels from '../levels';
-import {isHoverEnabled} from "react-native/Libraries/Pressability/HoverState";
 
 
 const Game = (props) => {
-    const goToHome = () => {
-        Actions.home()
-    };
 
     const levelID = props.level;
     const complexity = props.complexity;
     const level = Levels[complexity][levelID];
     let letters = level.letters;
-    let presCounter = props.level;
-    let maxPresCounter = level.answer;
     let [disabledLetter, setDisabledLetter] = useState([]);
     let [answer, setAnswer] = useState([]);
 
-    function validate(e) {
-        answer = setAnswer(`${answer}${e}`);
+    function createLetters(letter, index) {
+        if (disabledLetter.includes(index)) {
+            return (
+                <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
+                      disabled
+                >
+                    {letter}
+                </Text>
+            );
+        } else {
+            return (
+                <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
+                      onPress={() => validate(letter, index)}
+                >
+                    {letter}
+                </Text>
+            );
+        }
+    }
 
+    function validate(e, index) {
+        answer = setAnswer(`${answer}${e}`);
 
         //const index = letters.indexOf(e);
         //letters.splice(index, 1);
-        disabledLetter = setDisabledLetter(letters)
+
+        disabledLetter = setDisabledLetter(`${disabledLetter}, ${index}`)
     }
 
     const rows = letters.map((letter, index) =>
 
         <View key={index}>
-            <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
-                  onPress={(disabled) => validate(letter)}
-
-            >
-                {letter}
-            </Text>
-        </View>
+            {createLetters(letter, index)}
+        </View>,
     );
 
     return (
         <LinearGradient
             start={{x: 0, y: 1}} end={{x: 1, y: 0}}
-            colors={["#2c5aff", "#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
+            colors={['#2c5aff', '#0076ff', '#008cff', '#009fff', '#43a1ff', '#5fa2ff', '#74a4ff', '#a494f6', '#cc82e1']}
             style={{flex: 1}}
         >
 
@@ -177,4 +185,5 @@ const styles = StyleSheet.create({
         borderRadius: 25,
     },
 });
+
 export default Game;
