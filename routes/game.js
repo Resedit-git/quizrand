@@ -4,18 +4,8 @@ import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
 
 import * as Levels from '../levels';
+import {isHoverEnabled} from "react-native/Libraries/Pressability/HoverState";
 
-function shuffleArray(array) {
-    let i = array.length - 1;
-    for (i; i > 0; i--) {
-        const index = Math.floor(Math.random() * (i + 1));
-        const a = array[index];
-        array[index] = array[i];
-        array[i] = a;
-    }
-
-    return array;
-}
 
 const Game = (props) => {
     const goToHome = () => {
@@ -25,8 +15,10 @@ const Game = (props) => {
     const levelID = props.level;
     const complexity = props.complexity;
     const level = Levels[complexity][levelID];
-    let letters = shuffleArray(level.letters);
-    let [disabledLetter, setDisabledLetter] = useState( []);
+    let letters = level.letters;
+    let presCounter = props.level;
+    let maxPresCounter = level.answer;
+    let [disabledLetter, setDisabledLetter] = useState([]);
     let [answer, setAnswer] = useState([]);
 
     function validate(e) {
@@ -42,8 +34,8 @@ const Game = (props) => {
 
         <View key={index}>
             <Text style={[styles.letters, styles.textCenter, styles.lettersText, {flexWrap: 'nowrap'}]}
-                  onPress={() => validate(letter)}
-                  disabled={disabledLetter.includes(letter)}
+                  onPress={(disabled) => validate(letter)}
+
             >
                 {letter}
             </Text>
@@ -52,7 +44,7 @@ const Game = (props) => {
 
     return (
         <LinearGradient
-            start={{x: 0, y: 1}} end={{x: 0, y: 0}}
+            start={{x: 0, y: 1}} end={{x: 1, y: 0}}
             colors={["#2c5aff", "#0076ff", "#008cff", "#009fff", "#43a1ff", "#5fa2ff", "#74a4ff", "#a494f6", "#cc82e1"]}
             style={{flex: 1}}
         >
@@ -96,7 +88,7 @@ const styles = StyleSheet.create({
     },
     lettersText: {
         fontFamily: 'Cochin',
-        color: 'black',
+        color: 'white',
         fontSize: 25,
         fontWeight: 'bold',
     },
@@ -109,11 +101,22 @@ const styles = StyleSheet.create({
         marginTop: 50,
         justifyContent: 'space-evenly',
         padding: 10,
-        borderRadius: 25,
-        borderColor: 'white',
-        borderWidth: 1,
+        paddingBottom: 30,
         flexDirection: 'row',
         alignItems: 'center',
+        borderColor: 'white',
+        borderBottomWidth: 1,
+
+    },
+    letters: {
+        borderRadius: 50,
+        alignItems: 'center',
+        width: 40,
+        height: 40,
+        margin: 3,
+        marginTop: 10,
+        borderColor: 'white',
+        borderWidth: 1,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -121,21 +124,15 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 16.84,
-        elevation: 3,
-    },
-    letters: {
-        borderRadius: 50,
-        alignItems: 'center',
-        width: 40,
-        height: 40,
-        backgroundColor: 'white',
-        margin: 3,
-        marginTop: 10,
+        elevation: 2,
+
+        backgroundColor: 'rgba(95,162,255, 0.5)',
+
     },
     lettersContainer: {
         width: 280,
         height: 150,
-        marginTop: 50,
+        marginTop: 60,
     },
     lettersSpace: {
         flex: 1,
@@ -145,22 +142,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     answerContainer: {
-        borderRadius: 25,
         alignItems: "center",
         borderColor: 'white',
-        borderWidth: 1,
+        borderBottomWidth: 1,
         width: 200,
-        height: 60,
-        marginTop: 80,
-        justifyContent: 'space-evenly',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 16.84,
-        elevation: 3,
+        marginTop: 60,
+        paddingBottom: 10,
     },
     answerText: {
         fontFamily: 'Cochin',
@@ -183,7 +170,7 @@ const styles = StyleSheet.create({
         paddingRight: 15,
         borderRadius: 5,
     },
-    buttonContainer:{
+    buttonContainer: {
         marginBottom: 10,
         paddingLeft: 40,
         paddingRight: 40,
