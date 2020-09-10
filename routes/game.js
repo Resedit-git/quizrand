@@ -94,19 +94,19 @@ const Game = (props) => {
 const styles = StyleSheet.create({
 
     questionText: {
-        fontFamily: 'Roboto',
+        fontFamily: 'GoogleSans-Bold',
         color: 'white',
         fontSize: 18,
         fontWeight: '100',
     },
     lettersText: {
-        fontFamily: 'Roboto',
+        fontFamily: 'GoogleSans-Bold',
         color: 'white',
         fontSize: 30,
         fontWeight: 'bold',
     },
     lettersTextDisable: {
-        fontFamily: 'Roboto',
+        fontFamily: 'GoogleSans-Bold',
         color: 'white',
         fontSize: 25,
         fontWeight: 'bold',
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderColor: 'white',
         borderWidth: 1,
-        shadowColor: '#000',
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 2,
@@ -145,8 +145,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 16.84,
         elevation: 2,
-
-        backgroundColor: 'rgba(95,162,255, 0.5)',
+        backgroundColor: '#009fff',
 
     },
     lettersContainer: {
@@ -162,7 +161,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     answerContainer: {
-        alignItems: 'center',
+        alignItems: "center",
         borderColor: 'white',
         borderBottomWidth: 1,
         width: 200,
@@ -199,4 +198,3 @@ const styles = StyleSheet.create({
 });
 
 export default Game;
-

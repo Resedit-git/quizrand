@@ -1,17 +1,15 @@
 import React from 'react'
-import {TouchableOpacity, Text, View, StyleSheet, Button, Image, Alert, Animated} from 'react-native';
+import {TouchableOpacity, Text, View, StyleSheet, ActivityIndicator, Image, Alert, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Home = () => {
 
-    const goToComplexity = () => {
+    const goToComplexity  = () => {
         Actions.complexity()
     };
 
     return (
-
-
 
         <LinearGradient
 
@@ -52,6 +50,13 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+    },
+
     baseText: {
         fontFamily: "Cochin",
         color: "white",
@@ -62,9 +67,17 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
 
+    logoText: {
+        color: '#FFFFFF',
+        fontFamily: 'GoogleSans-Bold',
+        fontSize: 30,
+        marginTop: 29.1,
+        fontWeight: '300',
+    },
+
     container: {
         flex: 1,
-        justifyContent: "flex-end",
+        justifyContent: "center",
         alignItems: "center",
         paddingHorizontal: 10
     },
