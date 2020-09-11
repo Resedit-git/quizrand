@@ -14,6 +14,16 @@ const Game = (props) => {
     let letters = level.letters;
     let [disabledLetter, setDisabledLetter] = useState([]);
     let [answer, setAnswer] = useState([]);
+    let [count, setCount] = useState(0);
+    let maxCount;
+
+    if (complexity === '1') {
+        maxCount = (level.answer.length + 10);
+    } else if (complexity === '2') {
+        maxCount = (level.answer.length + 5);
+    } else if (complexity === '3') {
+        maxCount = level.answer.length;
+    }
 
 
     function createLetters(letter, index) {
@@ -37,15 +47,27 @@ const Game = (props) => {
     }
 
 
-    function validate(e, index) {
-        answer = [...answer, e];
+    function validate(letter, index) {
+        count++;
+        setCount(count);
+
+        if (level.answer[answer.length] !== letter) {
+            if (count >= maxCount) {
+                Actions.home();
+            }
+            return;
+        }
+
+        answer = [...answer, letter];
         setAnswer(answer);
-        disabledLetter = setDisabledLetter([...disabledLetter, index]);
+        disabledLetter = [...disabledLetter, index];
+        setDisabledLetter(disabledLetter);
 
-
-        if (answer.length === level.answer.length) {
+        if (level.answer === answer.join('')) {
             Actions.complexity();
         }
+
+
 
     }
 
@@ -137,7 +159,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderColor: 'white',
         borderWidth: 1,
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -161,7 +183,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     answerContainer: {
-        alignItems: "center",
+        alignItems: 'center',
         borderColor: 'white',
         borderBottomWidth: 1,
         width: 200,
